@@ -12,10 +12,10 @@
  testCase1 = User.create(username: "teste", password: "12345")
  piotr = User.create(username: "p!otr", password: "socks!!!")
 
- lostKeys = Lost.create(name: "Keys")
- lostWallet = Lost.create(name: "Wallet")
- lostPhone = Lost.create(name: "Phone")
- lostDog = Lost.create(name: "Dog")
+ lostKeys = Lost.create(name: "Keys", user: mackenzie)
+ lostWallet = Lost.create(name: "Wallet", user: mackenzie)
+ lostPhone = Lost.create(name: "Phone", user: mackenzie)
+ lostDog = Lost.create(name: "Dog", user: mackenzie)
 
  underBed = Location.create(name: "Under bed")
  onCounter = Location.create(name: "On the countertop")
