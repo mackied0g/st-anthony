@@ -1,3 +1,4 @@
 class Location < ApplicationRecord
-    belongs_to :found
+    has_many :founds
+    has_many :lost_items, through: :founds
 end
