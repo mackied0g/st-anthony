@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class LostItemTest < ActiveSupport::TestCase
+class LostTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

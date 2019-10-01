@@ -8,22 +8,21 @@
 
 
 
- lostKeys = LostItem.create(name: "Keys")
- lostWallet = LostItem.create(name: "Wallet")
- lostPhone = LostItem.create(name: "Phone")
- lostDog = LostItem.create(name: "Dog")
+ mackenzie = User.create(username: "mackied0g", password: "nincompoop")
+ testCase1 = User.create(username: "teste", password: "12345")
+ piotr = User.create(username: "p!otr", password: "socks!!!")
+
+ lostKeys = Lost.create(name: "Keys")
+ lostWallet = Lost.create(name: "Wallet")
+ lostPhone = Lost.create(name: "Phone")
+ lostDog = Lost.create(name: "Dog")
 
  underBed = Location.create(name: "Under bed")
  onCounter = Location.create(name: "On the countertop")
  pocket = Location.create(name: "In pocket")
  laundryBasket = Location.create(name: "In the laundry basket")
 
- mackenzie = User.create(username: "mackied0g", password: "nincompoop")
- testCase = User.create(username: "teste", password: "1234")
- testCase1 = User.create(username: "teste", password: "12345")
- piotr = User.create(username: "p!otr", password: "socks!!!")
-
- foundIt = Founds.create(lost_item_id: lostPhone.id, location_id: pocket.id)
- foundIt = Founds.create(lost_item_id: lostWallet.id, location_id: laundryBasket.id)
- foundIt = Founds.create(lost_item_id: lostDog.id, location_id: underBed.id)
- foundIt = Founds.create(lost_item_id: lostKeys.id, location_id: laundryBasket.id)
+ foundIt = Found.create(lost: lostPhone, location: pocket)
+ foundIt = Found.create(lost: lostWallet, location: laundryBasket)
+ foundIt = Found.create(lost: lostDog, location: underBed)
+ foundIt = Found.create(lost: lostKeys, location: laundryBasket)
