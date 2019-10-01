@@ -1,83 +1,77 @@
 class FoundsController < ApplicationController
+    before_action :set_found, only: [:show, :edit, :update, :destroy]
+    
     # GET /founds
     # GET /founds.json
     def index
-        @founds = Found.all
+       @founds = Found.all
+    end
     
-        respond_to do |format|
-          format.html # index.html.erb
-          format.json { render json: @founds }
-        end
-      end
+    # GET /founds/1
+    # GET /founds/1.json
+    def show
+    end
     
-      # GET /founds/1
-      # GET /founds/1.json
-      def show
-        @found = Found.find(params[:id])
+    # GET /founds/new
+    def new
+       @found = Found.new
+    end
     
-        respond_to do |format|
-          format.html # show.html.erb
-          format.json { render json: @found }
-        end
-      end
+    # GET /founds/1/edit
+    def edit
+    end
     
-      # GET /founds/new
-      # GET /founds/new.json
-      def new
-        @found = Found.new
-    
-        respond_to do |format|
-          format.html # new.html.erb
-          format.json { render json: @found }
-        end
-      end
-    
-      # GET /founds/1/edit
-      def edit
-        @found = Found.find(params[:id])
-      end
-    
-      # POST /founds
-      # POST /founds.json
-      def create
-        @found = Found.new(params[:found])
-    
-        respond_to do |format|
+    # POST /founds
+    # POST /founds.json
+    def create
+       @found = Found.create(found_params)
+       
+       respond_to do |format|
           if @found.save
-            format.html { redirect_to @found, notice: 'found was successfully created.' }
-            format.json { render json: @found, status: :created, location: @found }
+             format.html { redirect_to @found, notice: 'found was successfully created.' }
+             format.json { render :show, status: :created, found: @found }
           else
-            format.html { render action: "new" }
-            format.json { render json: @found.errors, status: :unprocessable_entity }
+             format.html { render :new }
+             format.json { render json: @found.errors, status: :unprocessable_entity }
           end
-        end
-      end
+       end
+       
+    end
     
-      # PUT /founds/1
-      # PUT /founds/1.json
-      def update
-        @found = Found.find(params[:id])
-    
-        respond_to do |format|
-          if @found.update_attributes(params[:found])
-            format.html { redirect_to @found, notice: 'found was successfully updated.' }
-            format.json { head :no_content }
+    # PATCH/PUT /founds/1
+    # PATCH/PUT /founds/1.json
+    def update
+       respond_to do |format|
+          if @found.update(found_params)
+             format.html { redirect_to @found, notice: 'found was successfully updated.' }
+             format.json { render :show, status: :ok, found: @found }
           else
-            format.html { render action: "edit" }
-            format.json { render json: @found.errors, status: :unprocessable_entity }
+             format.html { render :edit }
+             format.json { render json: @found.errors, status: :unprocessable_entity }
           end
-        end
-      end
+       end
+       
+    end
     
-      # DELETE /founds/1
-      # DELETE /founds/1.json
-      def destroy
-        @found = Found.find(params[:id])
-        @found.destroy
-    
-        respond_to do |format|
-          format.html { redirect_to founds_url }
+    # DELETE /founds/1
+    # DELETE /founds/1.json
+    def destroy
+       @found.destroy
+          respond_to do |format|
+          format.html { redirect_to founds_url, notice: 'found was successfully destroyed.' }
           format.json { head :no_content }
-        end
-    end  
-end
+       end
+    end
+    
+    private
+    
+    # Use callbacks to share common setup or constraints between actions.
+    def set_found
+       @found = Found.find(params[:id])
+    end
+    
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def found_params
+       params(:found).permit(:name)
+    end
+ end

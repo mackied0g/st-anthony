@@ -1,4 +1,4 @@
 class Found < ApplicationRecord
     belongs_to :location
-    belongs_to :lost_item
+    belongs_to :lost
 end

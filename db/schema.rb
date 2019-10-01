@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_30_211644) do
+ActiveRecord::Schema.define(version: 2019_10_01_152212) do
 
   create_table "founds", force: :cascade do |t|
-    t.integer "lost_item_id"
     t.integer "location_id"
+    t.integer "lost_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2019_09_30_211644) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "lost_items", force: :cascade do |t|
+  create_table "losts", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 2019_09_30_211644) do
     t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
 end

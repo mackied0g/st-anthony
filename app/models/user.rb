@@ -1,4 +1,4 @@
 class User < ApplicationRecord
-    has_many :lost_items
-    has_many :location, through: :lost_items
+    has_many :losts
+    has_many :location, through: :losts
 end
