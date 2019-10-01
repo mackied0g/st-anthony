@@ -72,6 +72,6 @@ class FoundsController < ApplicationController
     
     # Never trust parameters from the scary internet, only allow the white list through.
     def found_params
-       params(:found).permit(:name)
+       params(:found).permit(:location_id, :lost_id)
     end
  end

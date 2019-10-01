@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2019_10_01_152212) do
 
   create_table "losts", force: :cascade do |t|
     t.string "name"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
